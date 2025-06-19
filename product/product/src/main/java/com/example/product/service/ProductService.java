@@ -2,7 +2,6 @@ package com.example.product.service;
 
 import com.example.product.model.Product;
 import com.example.product.repo.ProductRepo;
-import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

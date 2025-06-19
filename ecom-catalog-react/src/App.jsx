@@ -52,7 +52,7 @@ function App() {
     <div>
       {/* after having the data we show in frontend */}
       <div className='container'>
-        <h1 className='my-4'>Product Catalog</h1>
+        <h1 className='my-4'>Takeo Local Products</h1>
 
         <div className='row align-items-center mb-4'>
 

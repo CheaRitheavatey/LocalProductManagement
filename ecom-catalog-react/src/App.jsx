@@ -3,6 +3,7 @@ import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 import ProductList from './ProductList';
+import CategoryFilter from './CategoryFilter';
 
 function App() {
   const [products, setProducts] = useState([]);
@@ -28,6 +29,24 @@ function App() {
   const handleSortChange = (event) => {
     setSortOrder(event.target.value);
   };
+  const handleCategorySelect = (categoryId) => {
+    setSelectedCategory(categoryId ? Number(categoryId) : null);
+  };
+
+  const filterProducts = products
+  .filter(product => {
+    return (
+      (selectedCategory ? product.category.id === selectedCategory : true)
+      // && product.name.toLowerCase().includes(searchTerm.toLowerCase())
+     
+    )
+  }).sort((a,b) => {
+    if (sortOrder === "asc") {
+      return a.price - b.price;
+    } else {
+      return b.price - a.price;
+    }
+  });
 
   return (
     <div>
@@ -39,7 +58,7 @@ function App() {
 
           {/* for category filter */}
           <div className='col-md-3 col-sm-12 mb-2'>
-            <p>Category Filter</p>
+            <CategoryFilter categories={categories} onSelect={handleCategorySelect} />
           </div>
 
           {/* search function */}
@@ -56,9 +75,9 @@ function App() {
  
 
         </div>
-        {products.length ? (
+        {filterProducts.length ? (
           // display product
-          <ProductList products={products}/>
+          <ProductList products={filterProducts}/>
         ) : (
           <p>No Products Found</p>
         )}

@@ -1,14 +1,14 @@
 package com.example.product.config;
 
+import java.util.Arrays;
+
+import org.springframework.boot.CommandLineRunner;
+import org.springframework.stereotype.Component;
+
 import com.example.product.model.Category;
 import com.example.product.model.Product;
 import com.example.product.repo.CategoryRepo;
 import com.example.product.repo.ProductRepo;
-import lombok.AllArgsConstructor;
-import org.springframework.boot.CommandLineRunner;
-import org.springframework.stereotype.Component;
-
-import java.util.Arrays;
 
 @Component
 //@AllArgsConstructor
@@ -30,7 +30,7 @@ public class DataSeeder implements CommandLineRunner {
 
         // create category
         Category electronic = new Category();
-        electronic.setName("Electronic");
+        electronic.setName("Food & Beverage");
 
         // create clothing
         Category clothes = new Category();
@@ -38,18 +38,18 @@ public class DataSeeder implements CommandLineRunner {
 
         // create Kittchen
         Category home = new Category();
-        home.setName("Home and Kitchen");
+        home.setName("Gifts");
 
         categoryRepo.saveAll(Arrays.asList(electronic, clothes, home));
 
 
         // create products
-        Product phone = new Product();
-        phone.setNamel("Smart Phone");
-        phone.setDescription("Latest model smartphone with amazing features");
-        phone.setImgUrl("https://placehold.co/600x400");
-        phone.setPrice(699.99);
-        phone.setCategory(electronic);
+        Product sugar = new Product();
+        sugar.setNamel("Smart Phone");
+        sugar.setDescription("Latest model smartphone with amazing features");
+        sugar.setImgUrl("img/claypot.png");
+        sugar.setPrice(699.99);
+        sugar.setCategory(electronic);
 
 
         // creating laptop
@@ -77,7 +77,7 @@ public class DataSeeder implements CommandLineRunner {
         blender.setCategory(clothes);
 
 
-        productRepo.saveAll(Arrays.asList(phone,laptop,jacket,blender));
+        productRepo.saveAll(Arrays.asList(sugar,laptop,jacket,blender));
 
 
     }
